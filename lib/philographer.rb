@@ -1,6 +1,9 @@
 require 'active_support/all'
 require "philographer/version"
+
 require "philographer/configuration"
+require "philographer/login_information"
+require "philographer/login_account"
 
 module Philographer
   def self.configuration

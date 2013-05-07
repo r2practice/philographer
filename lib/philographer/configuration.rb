@@ -3,7 +3,7 @@ module Philographer
 
     class IncompleteAuthDataError < StandardError; end
 
-    attr_accessor :account_number, :integrator_key, :password, :username
+    attr_accessor :account_id, :integrator_key, :password, :username
 
     def authentication_data
       return @authentication_data if @authentication_data
