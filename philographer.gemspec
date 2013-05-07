@@ -16,4 +16,11 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_dependency('httpclient', '~> 2.3.3')
+  gem.add_dependency('activesupport', '~> 3.0')
+
+  gem.add_development_dependency("minitest", "~> 4.7.4")
+  gem.add_development_dependency('turn', '~> 0.9.6')
+  gem.add_development_dependency("vcr", "~> 2.4.0")
 end
