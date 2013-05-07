@@ -18,3 +18,7 @@ Then(/^the user's authentication data should be ready for submission to DocuSign
   }
   Philographer.configuration.authentication_data.must_equal expected_hash
 end
+
+Given(/^a (mostly|fully) configured user account$/) do |config_level|
+  load_credentials((config_level == 'fully'))
+end
