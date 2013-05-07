@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency("httpclient", "~> 2.3.3")
   gem.add_dependency("activesupport", "~> 3.0")
+  gem.add_development_dependency("json", "~> 1.7.7")
 
   gem.add_development_dependency("cucumber", "~> 1.3.1")
   gem.add_development_dependency("minitest", "~> 4.7.4")

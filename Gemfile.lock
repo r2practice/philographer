@@ -43,6 +43,7 @@ GEM
       guard (>= 0.4)
     httpclient (2.3.3)
     i18n (0.6.1)
+    json (1.7.7)
     listen (1.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -81,6 +82,7 @@ DEPENDENCIES
   cucumber (~> 1.3.1)
   guard (~> 1.8.0)
   guard-minitest (~> 0.5.0)
+  json (~> 1.7.7)
   minitest (~> 4.7.4)
   philographer!
   pry-debugger (~> 0.2.2)
