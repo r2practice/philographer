@@ -2,6 +2,15 @@
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-Dir.glob(File.expand_path('../../spec/gem_configs', __FILE__) + "/**").each do |config|
-  require config
+require 'vcr'
+require 'aruba/cucumber'
+require 'minitest/spec'
+require 'pry'
+
+World(Minitest::Assertions)
+MiniTest::Spec.new(nil)
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr_cassettes'
+  config.hook_into :webmock
 end

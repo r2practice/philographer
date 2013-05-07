@@ -22,6 +22,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("json", "~> 1.7.7")
 
   gem.add_development_dependency("cucumber", "~> 1.3.1")
+  gem.add_development_dependency("aruba", "~> 0.5.2")
+
   gem.add_development_dependency("minitest", "~> 4.7.4")
   gem.add_development_dependency("turn", "~> 0.9.6")
 

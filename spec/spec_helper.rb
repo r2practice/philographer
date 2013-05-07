@@ -1,9 +1,6 @@
 require 'minitest/spec'
 require 'turn/autorun'
-
-Dir.glob(File.expand_path('./gem_configs', __FILE__) + "/**").each do |config|
-  require config
-end
+require 'vcr'
 
 require 'philographer'
 
@@ -11,3 +8,8 @@ Turn.config do |config|
   config.format = :dot
 end
 
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr_cassettes'
+  config.hook_into :webmock
+end
