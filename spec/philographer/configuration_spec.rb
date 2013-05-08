@@ -46,29 +46,15 @@ module Philographer
     end
 
     describe '#environment=(env_string)' do
-      it 'must accept demo as the setting' do
-        config.environment = 'demo'
-        config.environment.must_equal 'demo'
-      end
-
-      it 'must acccept production as a setting' do
-        config.environment = :production
-        config.environment.must_equal 'production'
+      %w{demo NA1 NA2 EU1}.each do |environment|
+        it "must accept '#{environment}' as the setting" do
+          config.environment = environment
+          config.environment.must_equal environment.upcase
+        end
       end
 
       it 'must raise ArgumentError if something else is passed' do
         -> { config.environment = 'garbage' }.must_raise(ArgumentError)
-      end
-    end
-
-    describe '#production?' do
-      it 'must default to false' do
-        config.wont_be :production?
-      end
-
-      it 'must return true when the environment is set to :production' do
-        config.environment = 'production'
-        config.must_be :production?
       end
     end
   end

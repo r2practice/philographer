@@ -22,18 +22,14 @@ module Philographer
       @environment ||= 'demo'
     end
 
-    ENVIRONMENT_OPTIONS = ['demo', 'production']
+    ENVIRONMENT_OPTIONS = %w{DEMO NA1 NA2 EU1}
     def environment=(env)
-      environment = env.to_s
+      environment = env.to_s.upcase
       unless ENVIRONMENT_OPTIONS.include? environment
         raise ArgumentError.new("Environment setting invalid! Allowed values are: #{ENVIRONMENT_OPTIONS.join(', ')}")
       else
         @environment = environment
       end
-    end
-
-    def production?
-      environment == 'production'
     end
   end
 end
