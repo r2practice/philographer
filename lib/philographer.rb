@@ -1,10 +1,10 @@
 require 'active_support/all'
 require "philographer/version"
 
-require "philographer/configuration"
-require "philographer/client"
-require "philographer/login_information"
-require "philographer/login_account"
+%w{api_object configuration client document envelope tab recipient
+login_information login_account}.each do |file|
+  require "philographer/#{file}"
+end
 
 module Philographer
   def self.configuration
