@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in philographer.gemspec
 gemspec
 
-group :development do
+group :local_development do
   # We'll Travis-CI to not install these non-required gems
   gem "guard", "~> 1.8.0"
   gem "guard-minitest", "~> 0.5.0"
