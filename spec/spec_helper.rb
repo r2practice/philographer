@@ -7,6 +7,12 @@ require 'minitest/hell'
 require 'turn/autorun'
 require 'vcr'
 
+begin
+  require 'pry'
+rescue LoadError
+  puts "Couldn't load pry, running in CI?"
+end
+
 require_relative 'helpers/credentials_helper'
 
 require 'philographer'
