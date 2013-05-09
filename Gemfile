@@ -14,3 +14,7 @@ group :development do
 
   gem 'pry-debugger', '~> 0.2.2'
 end
+
+group :test do
+  gem 'rake', '~> 10.0'
+end
