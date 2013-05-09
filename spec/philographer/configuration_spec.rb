@@ -40,8 +40,8 @@ module Philographer
     end
 
     describe '#environment' do
-      it 'must default to demo' do
-        config.environment.must_equal 'demo'
+      it 'must default to DEMO' do
+        config.environment.must_equal 'DEMO'
       end
     end
 

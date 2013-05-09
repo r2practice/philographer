@@ -19,7 +19,7 @@ module Philographer
     end
 
     def environment
-      @environment ||= 'demo'
+      @environment ||= 'DEMO'
     end
 
     ENVIRONMENT_OPTIONS = %w{DEMO NA1 NA2 EU1}
