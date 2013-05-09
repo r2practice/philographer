@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.setup
+
 require 'minitest/spec'
 require 'minitest/mock'
 require 'minitest/hell'

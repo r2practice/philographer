@@ -1,3 +1,6 @@
+require "bundler"
+Bundler.setup
+
 require "bundler/gem_tasks"
 require 'rake/testtask'
 require 'cucumber'
