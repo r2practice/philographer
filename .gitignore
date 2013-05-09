@@ -16,6 +16,9 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# other stuff
+Gemfile.lock
 *.DS_Store
 spec/credentials.yml
 rerun.txt
