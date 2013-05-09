@@ -1,6 +1,7 @@
 Philographer
 ============
 
+[![Build Status](https://travis-ci.org/r2practice/philographer.png)](https://travis-ci.org/r2practice/philographer)
 A super simple gem for interfacing w/ the DocuSign REST API and possibly a parser for their callback posts on document changes.
 
 ## Development Caveats
