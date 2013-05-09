@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'philographer/api_object'
 
 module Philographer
   describe APIObject do

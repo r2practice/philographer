@@ -1,3 +1,5 @@
+require_relative 'api_object'
+
 module Philographer
   class Envelope
     include APIObject
