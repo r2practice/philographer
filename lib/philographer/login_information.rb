@@ -15,5 +15,11 @@ module Philographer
         LoginAccount.new(account_data)
       }
     end
+
+    def default_account
+      @default_account ||= login_accounts.select { |account|
+        account.is_default
+      }.first
+    end
   end
 end
