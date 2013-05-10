@@ -11,3 +11,9 @@ Around '@login_playback' do |scenario, block|
     block.call
   end
 end
+
+Around '@envelopes' do |scenario, block|
+  VCR.use_cassette('envelopes') do
+    block.call
+  end
+end
