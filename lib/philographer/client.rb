@@ -2,6 +2,8 @@ require 'httpclient/include_client'
 
 require_relative 'client/url_builder'
 require_relative 'client/header_builder'
+require_relative 'client/body_builder'
+
 module Philographer
   class Client
     extend HTTPClient::IncludeClient
@@ -28,6 +30,7 @@ module Philographer
     def post(object)
       url = URLBuilder.url_for(config, object)
       headers = HeaderBuilder.headers_for(config, object)
+      body = BodyBuilder.build_for(object)
     end
 
     def login_information
