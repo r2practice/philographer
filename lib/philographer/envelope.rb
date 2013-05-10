@@ -34,8 +34,11 @@ module Philographer
       self.recipients ||= []
     end
 
-    def save
-      Client.post(self)
+    def as_json(options = {})
+      documents.each_with_index do |document, idx|
+        document.id ||= idx.to_s
+      end
+      super
     end
   end
 end

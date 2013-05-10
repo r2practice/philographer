@@ -31,11 +31,5 @@ module Philographer
         end
       end
     end
-
-    describe '#save' do
-      it "isn't implemented yet" do
-        skip "We're working on getting a full envelope made"
-      end
-    end
   end
 end
