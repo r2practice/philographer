@@ -3,7 +3,7 @@ Given(/^an envelope with a document constucted in ruby$/) do
     emailBlurb: 'Test email is testing',
     emailSubject: 'Test email',
   })
-  path = File.expand_path('../../test_files/basic.pdf', __FILE__)
+  path = File.expand_path('../../../spec/test_files/basic.pdf', __FILE__)
   @envelope.documents << Philographer::Document.new(path.to_s)
 
   recipient = Philographer::Recipient.new({
@@ -22,9 +22,10 @@ Given(/^an envelope with a document constucted in ruby$/) do
 end
 
 When(/^the constucted envelope has been submitted to DocuSign$/) do
+  load_credentials(true)
   @envelope.save
 end
 
 Then(/^the envelope should have the DocuSign ID available$/) do
-  @envelope.docusign_id.wont_be_nil
+  @envelope.id.wont_be_nil
 end
