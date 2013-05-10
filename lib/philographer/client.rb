@@ -1,11 +1,10 @@
 require 'httpclient/include_client'
 
+require_relative 'client/url_builder'
 module Philographer
   class Client
     extend HTTPClient::IncludeClient
     include_http_client
-
-    class UnknownEnvironmentOptionError < StandardError; end
 
     attr_reader :config
 
@@ -21,25 +20,18 @@ module Philographer
       }
     end
 
-    DOMAIN_MAP = {
-      'DEMO' => 'demo.docusign.net',
-      'NA1' => 'www.docusign.net',
-      'NA2' => 'na2.docusign.net',
-      'EU1' => 'eu1.docusign.net'
-    }
-    def domain
-      DOMAIN_MAP.fetch(environment) {
-        raise UnknownEnvironmentOptionError.new("#{environment} has no domain name associated with it.")
-      }
-    end
-
     def environment
       config.environment
     end
 
+    def post(object)
+      url = URLBuilder.url_for(config, object)
+    end
+
     def login_information
       return @login_information if @login_information
-      response = http_client.get("https://#{domain}/restapi/v2/login_information", header: base_headers.merge('Content-Type' => 'application/json'))
+      url = URLBuilder.login_url(config)
+      response = http_client.get(url, header: base_headers.merge('Content-Type' => 'application/json'))
       account_data = JSON.parse(response.body)
       @login_information = LoginInformation.instance
       @login_information.process_account_data(account_data)

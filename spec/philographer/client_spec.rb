@@ -4,29 +4,6 @@ module Philographer
   describe Client do
     let(:client) { Client.new(Philographer.configuration) }
 
-    describe '#domain' do
-      let(:config) { Configuration.new }
-
-      Configuration::ENVIRONMENT_OPTIONS.each do |option|
-        it "must return a value for #{option}" do
-          config.environment = option
-          Philographer.stub :configuration, config do
-            client.domain.wont_be_nil
-          end
-        end
-      end
-
-      it "must raise an error if an unknown value is set for the environment" do
-        -> {
-          # I know stubbing on the object under test is bad juju but the config
-          # object doesn't allow setting bad values either and this is to ensure
-          # the two stay in sync
-          client.stub :environment, config do
-            client.domain.wont_be_nil
-          end
-        }.must_raise Client::UnknownEnvironmentOptionError
-      end
-    end
 
     describe '#login_information' do
       it "must fetch the login information from docusign and return the instantiated object" do
@@ -44,6 +21,9 @@ module Philographer
           client.login_information
         }
       end
+    end
+
+    describe "post" do
     end
   end
 end
