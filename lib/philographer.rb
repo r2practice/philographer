@@ -1,7 +1,7 @@
 require 'active_support/all'
 require "philographer/version"
 
-%w{configuration client document envelope tab recipient
+%w{configuration client document envelope tab template recipient
 login_information login_account}.each do |file|
   require "philographer/#{file}"
 end

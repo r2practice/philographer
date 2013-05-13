@@ -5,6 +5,7 @@ require 'minitest/spec'
 require 'minitest/mock'
 require 'minitest/hell'
 require 'turn/autorun'
+require 'webmock'
 require 'vcr'
 
 begin
