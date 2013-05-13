@@ -11,7 +11,7 @@ module Philographer
       attribute :tabs
       attribute :recipients
     end }
-    let(:object) { klass.new }
+    let(:object) { Dummy.new }
 
     before do
       Philographer.const_set('Dummy', klass) unless defined? Dummy
@@ -66,7 +66,7 @@ module Philographer
       before do
         @original_client = Philographer.client
         Philographer.client = mock_client
-        mock_client.expect :post, id, [object]
+        mock_client.expect :post, {'dummyId' => id}, [object]
       end
 
       after do
@@ -80,23 +80,6 @@ module Philographer
 
         it "must set the objects id" do
           object.id.must_equal id
-        end
-
-        it "must call into the client to do the http interaction" do
-          mock_client.verify
-        end
-      end
-
-      describe "when the id has previously been set" do
-        let(:other_id) { SecureRandom.uuid }
-
-        before do
-          object.id = other_id
-          object.save
-        end
-
-        it 'must not change the id' do
-          object.id.must_equal other_id
         end
 
         it "must call into the client to do the http interaction" do

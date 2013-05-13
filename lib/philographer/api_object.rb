@@ -16,6 +16,10 @@ module Philographer
       set_attributes(attributes)
     end
 
+    def attributes=(attrs)
+      set_attributes(attrs)
+    end
+
     def attribute_names
       self.class.attribute_names
     end
@@ -25,8 +29,7 @@ module Philographer
     end
 
     def save
-      id = Philographer.client.post(self)
-      self.id ||= id
+      self.attributes = Philographer.client.post(self)
     end
 
     TYPED_OBJECTS = %w{recipients tabs}
