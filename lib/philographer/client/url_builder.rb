@@ -39,7 +39,7 @@ module Philographer
       end
 
       def base_url
-        self.class.base_url ||= "https://#{domain}/accounts/#{account_id}/"
+        self.class.base_url ||= "https://#{domain}/restapi/v2/accounts/#{account_id}/"
       end
 
       def domain

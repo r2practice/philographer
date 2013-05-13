@@ -54,6 +54,10 @@ module Philographer
           it 'must return a url with the specified account number' do
             builder.base_url.must_match /\/accounts\/REGEX_ME\/$/
           end
+
+          it 'must include the api specification' do
+            builder.base_url.must_match /\/restapi\/v2\//
+          end
         end
       end
     end
