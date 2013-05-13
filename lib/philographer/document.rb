@@ -5,18 +5,10 @@ module Philographer
     include APIObject
 
     attr_accessor :path
-    attribute :id
     attribute :name
     attribute :pdf_bytes
     attribute :attachment_description
-
-    def initialize(path)
-      if path.is_a? Hash
-        super
-      else
-        @path = path
-      end
-    end
+    attribute :path
 
     def file
       return @file if @file.present? && @file.path == path

@@ -13,7 +13,10 @@ module Philographer
         describe 'when the object contains one or more files' do
           let(:document) {
             path = File.expand_path('../../../test_files/basic.pdf', __FILE__)
-            Document.new(path)
+            Document.new({
+              path: path,
+              id: 1
+            })
           }
           let(:object) {
             Envelope.new({

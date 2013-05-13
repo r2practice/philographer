@@ -30,14 +30,15 @@ module Philographer
           }
         ]
 
-        object.documents.each_with_index do |document, idx|
+        body += object.documents.map { |document|
           file_type = MIME::Types.of(document.path).first
-          body << {
+          {
             'Content-Type' => file_type.to_s,
-            'Content-Disposition' => "file; filename=\"#{document.name}\"; documentId=#{idx}",
+            'Content-Disposition' => "file; filename=\"#{document.name}\"; documentId=#{document.id}",
             :content => document.file
           }
-        end
+        }
+
         body
       end
     end

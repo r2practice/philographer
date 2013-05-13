@@ -4,7 +4,9 @@ module Philographer
   describe Document do
     let(:path) { File.expand_path('../../test_files/basic.pdf', __FILE__) }
     let(:document) {
-      Document.new(path.to_s)
+      Document.new({
+        path: path.to_s
+      })
     }
 
     describe '#file' do

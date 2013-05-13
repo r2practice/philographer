@@ -4,7 +4,10 @@ Given(/^an envelope with a document constucted in ruby$/) do
     emailSubject: 'Test email',
   })
   path = File.expand_path('../../../spec/test_files/basic.pdf', __FILE__)
-  @envelope.documents << Philographer::Document.new(path.to_s)
+  @envelope.documents << Philographer::Document.new({
+    path: path.to_s,
+    id: 1
+  })
 
   recipient = Philographer::Recipient.new({
     type: 'signer',
@@ -15,7 +18,7 @@ Given(/^an envelope with a document constucted in ruby$/) do
     type: 'signHere',
     x_position: 100,
     y_position: 100,
-    document_id: 0,
+    document_id: 1,
     page_number: 1
   })
   @envelope.recipients << recipient
