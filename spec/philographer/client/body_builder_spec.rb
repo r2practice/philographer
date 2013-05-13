@@ -5,8 +5,15 @@ module Philographer
     describe BodyBuilder do
       describe '.build_for(object)' do
         describe 'when the object is plainly serializable' do
-          it 'is not implemented yet' do
-            skip "Basic Forms aren't implemented yet"
+          let(:role) { TemplateRole.new }
+          let(:object) { Envelope.new({
+            status: 'sent',
+            template_roles: [role]
+          }) }
+          let(:body) { BodyBuilder.build_for(object) }
+
+          it 'must return the json representation of the object' do
+            body.must_match /"status":"sent"/
           end
         end
 

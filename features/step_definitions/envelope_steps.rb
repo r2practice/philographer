@@ -32,3 +32,18 @@ end
 Then(/^the envelope should have the DocuSign ID available$/) do
   @envelope.id.wont_be_nil
 end
+
+Given(/^an envelope with a template constructed in ruby$/) do
+  @envelope = Philographer::Envelope.new({
+    status: 'sent',
+    template_id: "2912c004-7aea-4305-8ec7-3e58ac444b30"
+  })
+
+  recipient = Philographer::TemplateRole.new({
+    role_name: 'mySigner',
+    email: 'test@test.com',
+    name: 'Jon Doe'
+  })
+
+  @envelope.template_roles << recipient
+end

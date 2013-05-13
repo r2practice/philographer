@@ -17,6 +17,10 @@ module Philographer
         envelope.recipients.must_equal []
       end
 
+      it 'must set the template_roles to the default of []' do
+        envelope.recipients.must_equal []
+      end
+
       describe 'with an attributes hash supplied' do
         let(:envelope) {
           Envelope.new({

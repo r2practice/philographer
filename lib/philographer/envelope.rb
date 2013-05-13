@@ -32,6 +32,7 @@ module Philographer
       self.status ||= 'created'
       self.documents ||= []
       self.recipients ||= []
+      self.template_roles ||= []
     end
   end
 end

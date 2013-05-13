@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://demo.docusign.net/restapi/v2/accounts/283200/envelopes/
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":"sent","templateId":"2912c004-7aea-4305-8ec7-3e58ac444b30","templateRoles":[{"email":"test@test.com","name":"Jon
+        Doe","roleName":"mySigner"}]}'
+    headers:
+      X-Docusign-Authentication:
+      - ! '{"Username":"<%= Philographer.configuration.username %>","Password":"<%= Philographer.configuration.password %>","IntegratorKey":"<%= Philographer.configuration.integrator_key %>"}'
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '195'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 13 May 2013 19:41:31 GMT
+      Strict-Transport-Security:
+      - max-age=7776000; includeSubDomains
+    body:
+      encoding: US-ASCII
+      string: ! "{\r\n  \"envelopeId\": \"41bfd426-689c-457e-af04-60e8f46ab622\",\r\n
+        \ \"uri\": \"/envelopes/41bfd426-689c-457e-af04-60e8f46ab622\",\r\n  \"statusDateTime\":
+        \"2013-05-13T19:41:31.1070000Z\",\r\n  \"status\": \"sent\"\r\n}"
+    http_version: 
+  recorded_at: Mon, 13 May 2013 19:41:31 GMT
+recorded_with: VCR 2.4.0

@@ -34,6 +34,11 @@ module Philographer
       body = BodyBuilder.build_for(object)
 
       response = http_client.post(url, body: body, header: headers)
+      if (200..206).include? response.code
+        JSON.parse(response.body)
+      else
+        raise ArgumentError.new("you shouldn't be here!")
+      end
     end
 
     def login_information
