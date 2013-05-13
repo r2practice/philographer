@@ -1,3 +1,4 @@
+require 'httpclient'
 require 'httpclient/include_client'
 
 require_relative 'client/url_builder'
@@ -31,8 +32,8 @@ module Philographer
       url = URLBuilder.url_for(config, object)
       headers = HeaderBuilder.headers_for(config, object)
       body = BodyBuilder.build_for(object)
+
       response = http_client.post(url, body: body, header: headers)
-      nil
     end
 
     def login_information
