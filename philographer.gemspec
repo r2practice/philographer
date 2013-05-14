@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency("activesupport", "~> 3.0")
   gem.add_dependency("json", "~> 1.7.7")
   gem.add_dependency("mime-types", "~> 1.23")
+  gem.add_dependency("nokogiri", "~> 1.5")
 
   gem.add_development_dependency("cucumber", "~> 1.3.1")
   gem.add_development_dependency("aruba", "~> 0.5.2")
