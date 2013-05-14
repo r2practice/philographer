@@ -47,3 +47,12 @@ Given(/^an envelope with a template constructed in ruby$/) do
 
   @envelope.template_roles << recipient
 end
+
+When(/^a philographer user has requested data on envelopes$/) do
+  load_credentials(true)
+  @envelopes = Philographer::Envelope.fetch(from_date: Date.civil(2013), status: 'Completed')
+end
+
+Then(/^an array of relevant envelope objects should be retrieved$/) do
+  assert @envelopes.all?{|e| e.is_a?(Philographer::Envelope)}, "Expected all returned objects to be of type Philographer::Envelope, instead found: #{@envelopes.map{|e| e.class}.inspect}"
+end

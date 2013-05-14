@@ -14,3 +14,8 @@ Feature: Managing Signature Request Envelopes
     Given an envelope with a template constructed in ruby
     When the constucted envelope has been submitted to DocuSign
     Then the envelope should have the DocuSign ID available
+
+  @envelopes
+  Scenario: Polling for envelope data in bulk
+    When a philographer user has requested data on envelopes
+    Then an array of relevant envelope objects should be retrieved

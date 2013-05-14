@@ -60,6 +60,24 @@ module Philographer
           end
         end
       end
+
+      describe '#build!' do
+        before do
+          config.account_id = '12345'
+        end
+
+        it 'must return the correct url for an envelope' do
+          builder = URLBuilder.new(config, Philographer::Envelope)
+          url = builder.build!
+          url.must_match /\/envelopes$/
+        end
+
+        it 'must return the correct url for a template' do
+          builder = URLBuilder.new(config, Philographer::Template)
+          url = builder.build!
+          url.must_match /\/templates$/
+        end
+      end
     end
   end
 end

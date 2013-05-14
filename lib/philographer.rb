@@ -1,10 +1,12 @@
 require 'active_support/all'
 require "philographer/version"
 
-%w{configuration client document envelope tab template template_role recipient
+%w{configuration document envelope tab template template_role recipient
 login_information login_account}.each do |file|
   require "philographer/#{file}"
 end
+
+require "philographer/client"
 
 module Philographer
   def self.configuration

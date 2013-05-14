@@ -22,8 +22,5 @@ module Philographer
         }
       end
     end
-
-    describe "post" do
-    end
   end
 end

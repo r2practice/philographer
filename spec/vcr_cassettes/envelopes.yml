@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://demo.docusign.net/restapi/v2/accounts/283200/envelopes/
+    uri: https://demo.docusign.net/restapi/v2/accounts/<%= Philographer.configuration.account_id %>/envelopes
     body:
       encoding: US-ASCII
       string: ! '{"status":"sent","templateId":"2912c004-7aea-4305-8ec7-3e58ac444b30","templateRoles":[{"email":"test@test.com","name":"Jon
@@ -36,4 +36,78 @@ http_interactions:
         \"2013-05-13T19:41:31.1070000Z\",\r\n  \"status\": \"sent\"\r\n}"
     http_version: 
   recorded_at: Mon, 13 May 2013 19:41:31 GMT
-recorded_with: VCR 2.4.0
+- request:
+    method: get
+    uri: https://demo.docusign.net/restapi/v2/accounts/<%= Philographer.configuration.account_id %>/envelopes?from_date=2013-01-01&status=Completed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Docusign-Authentication:
+      - ! '{"Username":"<%= Philographer.configuration.username %>","Password":"<%= Philographer.configuration.password %>","IntegratorKey":"<%= Philographer.configuration.integrator_key %>"}'
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '3627'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 13 May 2013 21:40:27 GMT
+      Strict-Transport-Security:
+      - max-age=7776000; includeSubDomains
+    body:
+      encoding: US-ASCII
+      string: ! "{\r\n  \"resultSetSize\": \"4\",\r\n  \"totalSetSize\": \"4\",\r\n
+        \ \"startPosition\": \"0\",\r\n  \"endPosition\": \"3\",\r\n  \"envelopes\":
+        [\r\n    {\r\n      \"status\": \"completed\",\r\n      \"documentsUri\":
+        \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/documents\",\r\n      \"recipientsUri\":
+        \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/recipients\",\r\n      \"envelopeUri\":
+        \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f\",\r\n      \"envelopeId\":
+        \"46a0abf6-41e0-4d55-be64-829ac30ce57f\",\r\n      \"customFieldsUri\": \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/custom_fields\",\r\n
+        \     \"notificationUri\": \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/notification\",\r\n
+        \     \"statusChangedDateTime\": \"2013-05-04T04:04:13.5170000Z\",\r\n      \"documentsCombinedUri\":
+        \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/documents/combined\",\r\n
+        \     \"certificateUri\": \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/documents/certificate\",\r\n
+        \     \"templatesUri\": \"/envelopes/46a0abf6-41e0-4d55-be64-829ac30ce57f/templates\"\r\n
+        \   },\r\n    {\r\n      \"status\": \"completed\",\r\n      \"documentsUri\":
+        \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/documents\",\r\n      \"recipientsUri\":
+        \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/recipients\",\r\n      \"envelopeUri\":
+        \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b\",\r\n      \"envelopeId\":
+        \"b7fc44ce-dad8-414c-b720-c1ba340d1e2b\",\r\n      \"customFieldsUri\": \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/custom_fields\",\r\n
+        \     \"notificationUri\": \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/notification\",\r\n
+        \     \"statusChangedDateTime\": \"2013-05-06T16:59:28.8100000Z\",\r\n      \"documentsCombinedUri\":
+        \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/documents/combined\",\r\n
+        \     \"certificateUri\": \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/documents/certificate\",\r\n
+        \     \"templatesUri\": \"/envelopes/b7fc44ce-dad8-414c-b720-c1ba340d1e2b/templates\"\r\n
+        \   },\r\n    {\r\n      \"status\": \"completed\",\r\n      \"documentsUri\":
+        \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/documents\",\r\n      \"recipientsUri\":
+        \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/recipients\",\r\n      \"envelopeUri\":
+        \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb\",\r\n      \"envelopeId\":
+        \"4ce1968f-a88f-4ed6-b829-4af588ddd0bb\",\r\n      \"customFieldsUri\": \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/custom_fields\",\r\n
+        \     \"notificationUri\": \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/notification\",\r\n
+        \     \"statusChangedDateTime\": \"2013-05-06T18:13:28.3700000Z\",\r\n      \"documentsCombinedUri\":
+        \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/documents/combined\",\r\n
+        \     \"certificateUri\": \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/documents/certificate\",\r\n
+        \     \"templatesUri\": \"/envelopes/4ce1968f-a88f-4ed6-b829-4af588ddd0bb/templates\"\r\n
+        \   },\r\n    {\r\n      \"status\": \"completed\",\r\n      \"documentsUri\":
+        \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/documents\",\r\n      \"recipientsUri\":
+        \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/recipients\",\r\n      \"envelopeUri\":
+        \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45\",\r\n      \"envelopeId\":
+        \"5f14e3da-d201-44f5-9bd2-2a431969da45\",\r\n      \"customFieldsUri\": \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/custom_fields\",\r\n
+        \     \"notificationUri\": \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/notification\",\r\n
+        \     \"statusChangedDateTime\": \"2013-05-09T16:47:59.9570000Z\",\r\n      \"documentsCombinedUri\":
+        \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/documents/combined\",\r\n
+        \     \"certificateUri\": \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/documents/certificate\",\r\n
+        \     \"templatesUri\": \"/envelopes/5f14e3da-d201-44f5-9bd2-2a431969da45/templates\"\r\n
+        \   }\r\n  ]\r\n}"
+    http_version: 
+  recorded_at: Mon, 13 May 2013 21:40:28 GMT

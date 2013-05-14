@@ -2,6 +2,7 @@ module Philographer
   class Client
     class URLBuilder
       class UnknownEnvironmentOptionError < StandardError; end
+      class UnknownTypeSpecifiedError < StandardError; end
 
       DOMAIN_MAP = {
         'DEMO' => 'demo.docusign.net',
@@ -14,10 +15,10 @@ module Philographer
         attr_accessor :base_url
       end
 
-      attr_reader :object, :config
+      attr_reader :type, :config, :params
 
-      def self.url_for(config, object)
-        builder = new(config, object)
+      def self.url_for(config, type, params = {})
+        builder = new(config, type)
         builder.build!
       end
 
@@ -27,15 +28,23 @@ module Philographer
         @login_url = "https://#{builder.domain}/restapi/v2/login_information"
       end
 
-      def initialize(config, object = nil)
+      def initialize(config, type = nil, params = {})
         @config = config
-        @object = object
+        @type = type
+        @params = params.with_indifferent_access
       end
 
+      PATH_MAP = {
+        Philographer::Envelope => 'envelopes',
+        Philographer::Template => 'templates'
+      }
       def build!
-        if object.is_a? Envelope
-          base_url + "envelopes/#{object.id}"
-        end
+        path = PATH_MAP.fetch(type) {
+          raise UnknownTypeSpecifiedError.new "No known mapping from class #{type} to a url path."
+        }
+
+        url = base_url + path
+        params.include?("id") ? url + "/#{params['id']}" : url
       end
 
       def base_url
