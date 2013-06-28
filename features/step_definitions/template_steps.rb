@@ -1,7 +1,5 @@
 Given(/^a template constructed in ruby$/) do
-  @template = Philographer::Template.new({
-
-  })
+  @template = Philographer::Template.new({})
   path = File.expand_path('../../../spec/test_files/basic.pdf', __FILE__)
   @template.documents << Philographer::Document.new({
     path: path.to_s,
@@ -23,6 +21,7 @@ Given(/^a template constructed in ruby$/) do
 end
 
 When(/^the constructed template has been submitted to DocuSign$/) do
+  load_credentials(true)
   @template.save
 end
 
